@@ -14,6 +14,9 @@ router.get('/author', function(req, res) {
   res.render('author');
 });
 
+// Autoload de comandos con quizId
+router.param('quizId', quizController.load);
+
 // Definimos las rutas de Quizez teniendo en cuenta que puede haber más
 // de una pregunta.
 // Se utilizan expresiones regulares para indicar que el parámetro quizId 
