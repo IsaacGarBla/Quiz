@@ -1,8 +1,8 @@
 <P>
-<form methot="get" action="/quizes/answer">
+<form methot="get" action="/quizes/<%= quiz.id %>/answer">
  <p>Pregunta:<p>
  <br>
- <%= pregunta %>
+ <%= quiz.pregunta %>
  <input type ="text" name="respuesta" value="Introduzca su respuesta"/>
  <input type = "submit" value="Enviar">
 </form>            
