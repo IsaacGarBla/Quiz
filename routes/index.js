@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 
 /* GET Créditos- */
 router.get('/author', function(req, res) {
-  res.render('author');
+  res.render('author', { errors:[]});
 });
 
 // Autoload de comandos con quizId
