@@ -18,8 +18,6 @@ section > div		{ padding: 20px;
 section > table, form	{ text-align: left;
 			}
 
-section > form		{ text-align: left;
-			}
 
 header, nav, section	{ background: #eee;
 			  text-align: center;
