@@ -13,6 +13,7 @@ var partials = require('express-partials');
 var routes = require('./routes/index');
 
 var app = express();
+var ultimoAcceso; 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +42,22 @@ app.use(function(req, res, next) {
 
   // Hacer visible req.session en las vistas
   res.locals.session = req.session;
+  next();
+});
+
+// Control para autologout de session
+app.use(function(req, res, next) {
+  if (req.session.user) {
+	console.log("Usuario validado, control de tiempo");
+	// Se trata de un acceso de un usuario validado.
+	ultimoAcceso = ultimoAcceso || new Date();	// Si la variable tiene valor no se modificara.
+	if (ultimoAcceso.getTime() + 120000 < new Date().getTime()) {	// 120 segundos.
+		// Han pasado más de dos minutos.
+		delete req.session.user; // Destruir session.
+		res.render('sessions/new', {errors: [{"message": "Su sesión ha caducado, acceda otra vez."}]});
+	} else
+	ultimoAcceso = new Date(); // Actualizamos la fecha del último acceso.
+  }
   next();
 });
 
