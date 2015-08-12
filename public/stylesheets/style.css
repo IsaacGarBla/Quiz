@@ -15,8 +15,8 @@ body 			{ font: 16px Georgia, serif;
 section > div		{ padding: 20px;
 			}
 
-section > table, form	{ text-align: left;
-			}
+section > table, form, p	{ text-align: left;
+				}
 
 
 header, nav, section	{ background: #eee;
